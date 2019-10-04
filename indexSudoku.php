@@ -18,9 +18,9 @@
           }
           for ($j=0; $j < 9; $j++) {
             if ($j == 2 || $j == 5) {
-              echo "<td id='cell".$cell_num."' class='bRight'>&nbsp;&nbsp;&nbsp;</td>";
+              echo "<td id='cell".$cell_num."' class='bRight'></td>";
             } else {
-              echo "<td id='cell".$cell_num."'>&nbsp;&nbsp;&nbsp;</td>";
+              echo "<td id='cell".$cell_num."'></td>";
             }
             array_push($cells, $cell_num);
             $cell_num += 1;
