@@ -8,7 +8,8 @@
   <body>
     <table>
       <?php
-        $cells = 0;
+        $cell_num = 1;
+        $cells = array();
         for ($i=0; $i < 9; $i++) {
           if ($i == 2 || $i == 5) {
             echo "<tr class='bBottom'>";
@@ -17,13 +18,22 @@
           }
           for ($j=0; $j < 9; $j++) {
             if ($j == 2 || $j == 5) {
-              echo "<td class='bRight'>&nbsp;&nbsp;&nbsp;</td>";
+              echo "<td id='cell".$cell_num."' class='bRight'>&nbsp;&nbsp;&nbsp;</td>";
             } else {
-              echo "<td>&nbsp;&nbsp;&nbsp;</td>";
+              echo "<td id='cell".$cell_num."'>&nbsp;&nbsp;&nbsp;</td>";
             }
-            $cells += 1;
+            array_push($cells, $cell_num);
+            $cell_num += 1;
           }
           echo "</tr>";
+        }
+        for ($i=0; $i < 20; $i++) {
+          $index = rand(0, count($cells)-1);
+          $num = rand(1, 9);
+          $cell_pos = $cells[$index];
+          echo "<script>document.getElementById('cell".$cell_pos."').innerHTML = ".$num."</script>";
+          unset($cells[$index]);
+          $cells = array_values($cells);
         }
        ?>
     </table>
